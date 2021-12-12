@@ -9,15 +9,21 @@ import (
 	"strings"
 )
 
-func listHtmlFilesInDir(blogpath string) {
+// FIXME: Decomplect this
+func readHtmlFilesInDir(blogpath string) {
 	files, err := ioutil.ReadDir(blogpath)
 	if err != nil {
 		log.Fatal(err)
 	}
 	for _, file := range files {
 		if strings.HasSuffix(file.Name(), ".html") {
-			fmt.Println(strings.Replace(file.Name(),
-				".html", "", 1))
+			fmt.Print(strings.Replace(file.Name(),
+				".html", "", 1) + " ")
+			content, err := ioutil.ReadFile(blogpath + "/" + file.Name())
+			if err != nil {
+				log.Fatal(err)
+			}
+			fmt.Println(len(content))
 		}
 	}
 }
@@ -30,5 +36,5 @@ func main() {
 		flag.PrintDefaults()
 		os.Exit(-1)
 	}
-	listHtmlFilesInDir(blogpath)
+	readHtmlFilesInDir(blogpath)
 }
