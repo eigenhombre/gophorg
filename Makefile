@@ -1,10 +1,11 @@
-.PHONY: all test clean
+.PHONY: test clean deps
 
 PROG=gophorg
 
-all:
-	make test
-	make ${PROG}
+all: test ${PROG} deps
+
+deps:
+	go get .
 
 ${PROG}:
 	go build
