@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"flag"
+	"fmt"
+)
 
 func main() {
-	fmt.Println("Hello, World!")
+	var blogpath string
+	flag.StringVar(&blogpath, "b", "blogpath", "Specify path to Org export / blog files.")
+	flag.Parse()
+	fmt.Println(blogpath)
 }
