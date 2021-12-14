@@ -2,7 +2,7 @@
 
 PROG=gophorg
 
-all: test ${PROG} deps # lint  <- Add back when Issue 15 is resolved.
+all: test ${PROG} deps lint
 
 deps:
 	go get .
