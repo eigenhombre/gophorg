@@ -3,10 +3,11 @@ package main
 import (
 	"bytes"
 	"errors"
-	"golang.org/x/net/html"
 	"io"
 	"strings"
 	"testing"
+
+	"golang.org/x/net/html"
 )
 
 // Most of this code will eventually be reworked or moved into
@@ -48,7 +49,7 @@ func TestHTMLParsing(t *testing.T) {
     <p>more content</p>
 
 </body>`
-	if 0 != (strings.Compare(body, desired)) {
+	if strings.Compare(body, desired) != 0 {
 		t.Log("Unexpected parse output")
 		t.Fail()
 	}

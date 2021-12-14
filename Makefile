@@ -15,6 +15,7 @@ test:
 
 lint:
 	golint -set_exit_status .
+	staticcheck .
 
 clean:
 	rm ${PROG}
