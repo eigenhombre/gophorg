@@ -14,5 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run a multi-line script
+      - name: Go Dependencies
+        run: |
+          go install golang.org/x/lint/golint
+
+      - name: Build and test
         run: make
