@@ -1,3 +1,4 @@
+// gophorg is an experimental reboot of my blog in (*gasp*) Go.
 package main
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-func findHtmlFilesInDir(blogpath string) ([]string, error) {
+func findHTMLFilesInDir(blogpath string) ([]string, error) {
 	var ret []string
 	files, err := ioutil.ReadDir(blogpath)
 	if err != nil {
@@ -23,7 +24,7 @@ func findHtmlFilesInDir(blogpath string) ([]string, error) {
 	return ret, nil
 }
 
-func processHtmlFile(blogpath, outpath, file string) error {
+func processHTMLFile(blogpath, outpath, file string) error {
 	content, err := ioutil.ReadFile(blogpath + "/" + file)
 	if err != nil {
 		return err
@@ -35,17 +36,17 @@ func processHtmlFile(blogpath, outpath, file string) error {
 	return nil
 }
 
-func copyBlogHtmlFiles(blogpath string, outpath string) (int, error) {
+func copyBlogHTMLFiles(blogpath string, outpath string) (int, error) {
 	var err error
 	if err = os.MkdirAll(outpath, 0755); err != nil {
 		return 0, err
 	}
-	files, err := findHtmlFilesInDir(blogpath)
+	files, err := findHTMLFilesInDir(blogpath)
 	if err != nil {
 		return 0, err
 	}
 	for _, file := range files {
-		err := processHtmlFile(blogpath, outpath, file)
+		err := processHTMLFile(blogpath, outpath, file)
 		if err != nil {
 			return 0, err
 		}
@@ -62,7 +63,7 @@ func main() {
 		flag.PrintDefaults()
 		os.Exit(-1)
 	}
-	numfiles, err := copyBlogHtmlFiles(blogpath, outpath)
+	numfiles, err := copyBlogHTMLFiles(blogpath, outpath)
 	if err != nil {
 		log.Fatal(err)
 	}
