@@ -6,7 +6,7 @@
 
 Porting [Organa](https://github.com/eigenhombre/organa/) to Go to learn... Go.
 
-Don't use or even just scald your eyeballs by looking at this yet.  I'm just learning.
+I'm just learning, I don't recommend using this for anything at all (yet).
 
 # License
 
