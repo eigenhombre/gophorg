@@ -7,6 +7,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"golang.org/x/net/html"
 )
 
@@ -65,3 +66,24 @@ const htm = `<!DOCTYPE html>
     <p>more content</p>
 </body>
 </html>`
+
+// FIXME: Move out of testing namespace
+type Post struct {
+	ID      int
+	Title   string
+	RawHTML string
+}
+
+func TestPostCreationFromLiterals(t *testing.T) {
+	// See if we can create a new type
+	var postList = []Post{
+		{1, "A good post", ""},
+		{2, "A mediocre post", "<br/>"},
+	}
+	// FIXME: remove:
+	assert.Equal(t, len(postList), 2)
+}
+
+func TestParseTitleFromHTML(t *testing.T) {
+	// FIXME: Continue writing this
+}
